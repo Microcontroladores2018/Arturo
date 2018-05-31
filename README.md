@@ -13,3 +13,8 @@ Assim, surgiu a ideia de criar um dispositivo que consiga detectar e avisar o de
 Este projeto vai ser feito com o uso de uma STM32F407Discovery um sensor de distância Ultrassônico HC-SR04 e um buzzer simples. Um sinal VCC vai alimentar o sensor ultrassom e o buzzer. As informações obtidas pelo sensor serão processadas pelo microcontroador, e caso haja a detecção, o buzzer vai emitir som, para assim poder aviasar o usuário. O diagrama de blocos do funcionamento se encontra abaixo.
 
 ![Screenshot](buzzer.PNG)
+
+### Referência Bibliográfica
+
+1. Manual de Referência STM32F4
+2. Datasheet HC-SR04
