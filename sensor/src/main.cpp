@@ -118,20 +118,22 @@ int SpeedControl(int g, int k){
 	float gravity,accelx,accelz,accely;
 	int g;
 
+	uint32_t contador;
+
 	void SysTick_Handler() {
-		int contador;
+		//int contador;
 		if (contador != 0) { contador--; }
 	}
 	// Delay de 1us
 	void Delay_us(uint32_t mSecs) {
-		uint32_t contador;
+		//uint32_t contador;
 		contador = mSecs+1;
 		while (contador != 0);
 	}
 
 int time;
 
-//uint32_t contador;
+
 
 int main(void)
 {
@@ -140,12 +142,14 @@ int main(void)
 	  STM_EVAL_LEDInit(LED5);
 	  STM_EVAL_LEDInit(LED6);
 
+	  STM_EVAL_LEDOn(LED6);
+
 	SysTick_Config(168-1);
 	//InitializeLEDs();
 	InitializeTimer(3);
 	InitializePWMChannel2(350);
 
-	int laststate;
+	//int laststate;
 	int distancia;
 	while(1){
 
