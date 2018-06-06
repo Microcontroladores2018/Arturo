@@ -1,6 +1,11 @@
-core_cm4.h:1535:22:NVIC_SetPriority	16	static
-core_cm4.h:1662:26:SysTick_Config	16	static
-main.c:79:6:Delay	16	static
-main.c:86:5:main	40	static
-main.c:240:6:TIM_Config	16	static
-main.c:264:6:EVAL_AUDIO_TransferComplete_CallBack	24	static
+core_cm4.h:1535:22:void NVIC_SetPriority(IRQn_Type, uint32_t)	16	static
+core_cm4.h:1662:26:uint32_t SysTick_Config(uint32_t)	16	static
+main.cpp:49:6:void InitializeTimer(int)	32	static
+main.cpp:62:6:void InitializePWMChannel3(int)	40	static
+main.cpp:78:6:void InitializePWMChannel2(int)	40	static
+main.cpp:107:5:int SpeedControl(int, int)	24	static
+main.cpp:121:7:void SysTick_Handler()	16	static
+main.cpp:126:7:void Delay_us(uint32_t)	24	static
+main.cpp:136:5:int main()	16	static
+main.cpp:196:17:void EVAL_AUDIO_TransferComplete_CallBack(uint32_t, uint32_t)	16	static
+main.cpp:205:21:uint16_t EVAL_AUDIO_GetSampleCallBack()	4	static

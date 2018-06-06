@@ -516,7 +516,6 @@ static void Audio_MAL_IRQHandler(void)
       should be coded by user (its prototype is already declared in stm32f4_discovery_audio_codec.h) */  
       EVAL_AUDIO_TransferComplete_CallBack((uint32_t)CurrentPos, 0);       
     }
-
     
  #elif defined(AUDIO_MAL_MODE_CIRCULAR)
     /* Manage the remaining file size and new address offset: This function 
@@ -599,11 +598,6 @@ void Audio_I2S_IRQHandler(void)
     /* Send dummy data on I2S to avoid the underrun condition */
     SPI_I2S_SendData(CODEC_I2S, EVAL_AUDIO_GetSampleCallBack()); 
   }
-}
-uint16_t EVAL_AUDIO_GetSampleCallBack(void){
-
-
-	return 0x0000;
 }
 /*========================
 
