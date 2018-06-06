@@ -45,7 +45,7 @@ SOFTWARE.
  */
 
 
-
+//Inicializando o Timer para fazer o PWM
 void InitializeTimer(int period = 500){
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
 
@@ -59,6 +59,8 @@ void InitializeTimer(int period = 500){
 	TIM_Cmd(TIM4, ENABLE);
 }
 
+
+//Fazendo o PWM
 void InitializePWMChannel3(int dutycicle = 500){
 
 	TIM_OCInitTypeDef outputChannelInit = {0,};
@@ -103,23 +105,9 @@ void InitializeLEDs(){
 	GPIO_Init(GPIOD, &gpioStructure);
 }
 
-
-int SpeedControl(int g, int k){
-	//calculando o duty cicle do pwm proporcionalmente a inclinação
-	int speed;
-	speed = 500-g*k;
-	return speed;
-
-}
-
-#define ACCEL_MAX 32766
-
-	int k = 35,speed;
-	float gravity,accelx,accelz,accely;
-	int g;
-
 	uint32_t contador;
 
+	//Criando funcao que retorna o tempo em HIGH de um sinal
 	void SysTick_Handler() {
 		//int contador;
 		if (contador != 0) { contador--; }
@@ -137,19 +125,23 @@ int time;
 
 int main(void)
 {
+
+
+	  //Inicializando LEDs
 	  STM_EVAL_LEDInit(LED3);
 	  STM_EVAL_LEDInit(LED4);
 	  STM_EVAL_LEDInit(LED5);
 	  STM_EVAL_LEDInit(LED6);
-
+	  //Teste para ver se o programa esta sendo enviado pra placa
 	  STM_EVAL_LEDOn(LED6);
 
+
+	//Inicializando PWM com 62,5kHz e 62,5% de duty cicle
 	SysTick_Config(168-1);
-	//InitializeLEDs();
 	InitializeTimer(3);
 	InitializePWMChannel2(350);
 
-	//int laststate;
+	//Calculo da distancia do objeto a partir do sinal fornecido pelo sensor
 	int distancia;
 	while(1){
 
@@ -162,7 +154,7 @@ int main(void)
 		}
 
 	distancia=time*0.034/2;
-
+	//Teste para ver se obstaculo esta a 50cm do sensor
 	if (distancia < 0) {
 					  	  	  STM_EVAL_LEDOn(LED3);
 					  	  	  STM_EVAL_LEDOff(LED4);
