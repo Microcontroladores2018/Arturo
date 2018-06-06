@@ -92,7 +92,7 @@ void InitializePWMChannel2(int dutycicle = 500){
 
 
 
-/*void InitializeLEDs(){
+void InitializeLEDs(){
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
 
 	GPIO_InitTypeDef gpioStructure;
@@ -101,7 +101,7 @@ void InitializePWMChannel2(int dutycicle = 500){
 	gpioStructure.GPIO_Speed = GPIO_Speed_50MHz;
 
 	GPIO_Init(GPIOD, &gpioStructure);
-}*/
+}
 
 
 int SpeedControl(int g, int k){
@@ -135,7 +135,7 @@ int time;
 
 int main(void)
 {
-	 STM_EVAL_LEDInit(LED3);
+	  STM_EVAL_LEDInit(LED3);
 	  STM_EVAL_LEDInit(LED4);
 	  STM_EVAL_LEDInit(LED5);
 	  STM_EVAL_LEDInit(LED6);
@@ -143,7 +143,7 @@ int main(void)
 	SysTick_Config(168-1);
 	//InitializeLEDs();
 	InitializeTimer(3);
-	InitializePWMChannel2(312);
+	InitializePWMChannel2(350);
 
 	int laststate;
 	int distancia;
@@ -157,7 +157,7 @@ int main(void)
 	                time++;
 		}
 
-	distancia=time*0,034/2;
+	distancia=time*0.034/2;
 
 	if (distancia < 0) {
 					  	  	  STM_EVAL_LEDOn(LED3);
